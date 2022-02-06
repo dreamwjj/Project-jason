@@ -4,7 +4,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace=绑定一个对应的接口dao/mapper接口-->
 <mapper namespace="cn.itcast.dao.UserDao">
+    <!--获取所有用户-->
     <select id="getUserList" resultType="cn.itcast.pojo.User">
         select  *  from  t_user ;
     </select>
+    <!--根据id获取用户-->
+    <select id="getUserById" parameterType="int" resultType="cn.itcast.pojo.User">
+        select * from t_user t where t.id = #{id}
+    </select>
+    <!--插入用户-->
+    <insert id="addUser" parameterType="cn.itcast.pojo.User">
+        insert into t_user
+        (id,password,username,name,sex,age,address,qq,email)
+        values
+        (#{id},#{password},#{username},#{name},#{sex},#{age},#{address},#{qq},#{email})
+    </insert>
+    <!--插入用户2-->
+    <insert id="addUser2" parameterType="map">
+        insert into t_user
+        (id,username,password)
+        values
+        (#{id},#{username},#{password})
+    </insert>
+    <!--修改用户信息-->
+    <update id="updateUser" parameterType="cn.itcast.pojo.User">
+        update t_user t set
+        name = #{name},
+        password = #{password},
+        username = #{username},
+        sex = #{sex},
+        age = #{age},
+        address = #{address},
+        qq = #{qq},
+        email = #{email}
+        where id = #{id}
+    </update>
+    <!--删除用户信息-->
+    <delete id="deleteUser" parameterType="int">
+        delete from t_user where id = #{id}
+    </delete>
 </mapper>
