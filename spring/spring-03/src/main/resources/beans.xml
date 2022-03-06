@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--使用spring来创建对象-->
+    <bean id="student" class="cn.itcast.pojo.Student">
+        <!--普通注入-->
+        <property name="name" value="wjj" />
+        <!--对象-->
+        <property name="address" ref="address"/>
+        <!--数组-->
+        <property name="books">
+            <array>
+                <value>红楼</value>
+                <value>水浒</value>
+                <value>西游</value>
+                <value>三国</value>
+            </array>
+        </property>
+        <!--list-->
+        <property name="hobbies">
+            <list>
+                <value>美女</value>
+                <value>电子产品</value>
+                <value>游戏机</value>
+            </list>
+        </property>
+        <!--map-->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="111"/>
+                <entry key="银行卡" value="222"/>
+            </map>
+        </property>
+        <!--set-->
+        <property name="games">
+            <set>
+                <value>lol</value>
+                <value>pubg</value>
+                <value>ny</value>
+            </set>
+        </property>
+        <!--null-->
+        <property name="wife">
+            <null/>
+        </property>
+        <property name="info">
+            <props>
+                <prop key="学号">1001</prop>
+                <prop key="成绩">666</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="address" class="cn.itcast.pojo.Address">
+        <property name="address" value="无锡"/>
+    </bean>
+</beans>
